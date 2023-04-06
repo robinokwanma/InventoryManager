@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { useState, useEffect, useRef } from "react";
+import { Provider as PaperProvider } from "react-native-paper";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import Tabs from "./src/navigation/Tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { AuthProvider } from "./src/components/AuthContext";
+import { ItemsProvider } from "./src/components/ItemsContext";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ItemsProvider>
+      <PaperProvider>
+        <AuthProvider>
+          <NavigationContainer>
+            <Tabs />
+          </NavigationContainer>
+        </AuthProvider>
+      </PaperProvider>
+    </ItemsProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
