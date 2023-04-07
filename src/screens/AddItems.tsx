@@ -4,7 +4,6 @@ import {
   TextInput,
   Button,
   StyleSheet,
-  FlatList,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
@@ -14,7 +13,6 @@ import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../components/AuthContext";
 import AuthForm from "../components/AuthForm";
 import { login, logout, isLoggedIn } from "../components/AuthLogic";
-import { launchImageLibrary } from "react-native-image-picker";
 
 interface Item {
   id: number;
@@ -173,18 +171,18 @@ const AddItems = ({}: AddItemsProps) => {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    <View style={styles.container}>
-      {authenticated ? (
-        <View style={styles.container}>{addNewItems()}</View>
-      ) : (
-        <AuthForm
-          loginForm={loginForm}
-          setLoginForm={setLoginForm}
-          handleLogin={handleLogin}
-        />
-      )}
-    </View>
-      </TouchableWithoutFeedback>
+      <View style={styles.container}>
+        {authenticated ? (
+          <View style={styles.container}>{addNewItems()}</View>
+        ) : (
+          <AuthForm
+            loginForm={loginForm}
+            setLoginForm={setLoginForm}
+            handleLogin={handleLogin}
+          />
+        )}
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

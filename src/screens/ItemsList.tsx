@@ -1,20 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect, useRef } from "react";
-import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
 import {
   View,
   Text,
   Image,
   TextInput,
-  Button,
   StyleSheet,
   FlatList,
-  TouchableOpacity,
 } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import AuthForm from "../components/AuthForm";
-import LogoutButton from "../components/LogoutButton";
 import { useAuth } from "../components/AuthContext";
 import { login, logout, isLoggedIn } from "../components/AuthLogic";
 

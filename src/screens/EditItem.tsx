@@ -1,6 +1,13 @@
-// EditItem.tsx
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, Button, StyleSheet, TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RouteProp, useRoute } from "@react-navigation/native";
@@ -33,7 +40,9 @@ const EditItem = ({ route }: EditItemProps) => {
   const setItem = route.params.setItem;
   const [name, setName] = useState(item ? item.name : "");
   const [price, setPrice] = useState(item ? item.price.toString() : "");
-  const [totalStock, setTotalStock] = useState(item ? item.totalStock.toString() : "");
+  const [totalStock, setTotalStock] = useState(
+    item ? item.totalStock.toString() : ""
+  );
   const [description, setDescription] = useState(item ? item.description : "");
   const navigation = useNavigation();
 
@@ -130,41 +139,41 @@ const EditItem = ({ route }: EditItemProps) => {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    <View style={styles.container}>
-      <Text>Name:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Item name"
-        onChangeText={setName}
-        value={name}
-      />
-      <Text>Price:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Price"
-        onChangeText={setPrice}
-        value={price}
-        keyboardType="numeric"
-      />
-      <Text>Total Stock:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Total Stock"
-        onChangeText={setTotalStock}
-        value={totalStock}
-        keyboardType="numeric"
-      />
-      <Text>Description:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Description"
-        onChangeText={setDescription}
-        value={description}
-        numberOfLines={5}
-        textAlignVertical="top"
-      />
-      <Button title="Update Item" onPress={saveItem} />
-    </View>
+      <View style={styles.container}>
+        <Text>Name:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Item name"
+          onChangeText={setName}
+          value={name}
+        />
+        <Text>Price:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Price"
+          onChangeText={setPrice}
+          value={price}
+          keyboardType="numeric"
+        />
+        <Text>Total Stock:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Total Stock"
+          onChangeText={setTotalStock}
+          value={totalStock}
+          keyboardType="numeric"
+        />
+        <Text>Description:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Description"
+          onChangeText={setDescription}
+          value={description}
+          numberOfLines={5}
+          textAlignVertical="top"
+        />
+        <Button title="Update Item" onPress={saveItem} />
+      </View>
     </TouchableWithoutFeedback>
   );
 };

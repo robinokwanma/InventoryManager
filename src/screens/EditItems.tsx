@@ -6,8 +6,6 @@ import {
   Button,
   StyleSheet,
   FlatList,
-  TouchableWithoutFeedback, 
-  Keyboard,
   Image,
   Alert,
 } from "react-native";
@@ -22,6 +20,7 @@ import LogoutButton from "../components/LogoutButton";
 import { useItems } from "../components/ItemsContext";
 
 interface EditItemsProps {
+  isTest?: boolean;
   items: Item[];
   setItems: React.Dispatch<React.SetStateAction<Item[]>>;
   authenticated: boolean;
@@ -111,20 +110,22 @@ const EditItems = () => {
   };
 
   const renderItem = ({ item }: { item: Item }) => (
-    <View style={styles.item}>
+    <View style={styles.item} >
       <Text style={styles.title}>{item.name}</Text>
       <Image
         style={styles.image}
         source={{ uri: "https://via.placeholder.com/150" }}
       />
+      <Text>Price: ${item.id}</Text>
       <Text>{item.description}</Text>
       <View style={styles.priceStockContainer}>
         <Text>Total Stock: {item.totalStock}</Text>
         <Text>Price: ${item.price}</Text>
+        
       </View>
-      <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainer} >
         <Button title="Edit" onPress={() => editItem(item.id)} />
-        <Button title="Delete" onPress={() => deleteItem(item.id)} />
+        <Button title="Delete" onPress={() => deleteItem(item.id)} testID="delete-button"/>
       </View>
     </View>
   );
